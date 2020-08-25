@@ -16,11 +16,13 @@ class Textfile(object):
     __wordlist = []
     wordfreq = []
     worddict = {}
+    stopwords = []
 
     #Construtor da classe: Abre o arquivo e implementa uma lista com as palavras do texto    
     def __init__(self, fileName):
         self.fileName = open(fileName, "r")
-        self.wordlist = self.separarPalavras()     
+        self.wordlist = self.separarPalavras()
+        self.stopwords = []      
   
     def __str__(self):
         return ("A quantidade de palavras: " + str(self.wordlist))
@@ -87,9 +89,34 @@ class Textfile(object):
         return (mean, deviation)
 
 
+
     # Cadastre StopWords (A classe deve possuir um atributo com uma lista de StopWords)
+    def stopWords(self):
+        cadastrar = "s"
+        while (cadastrar == "s"):
+            self.stopwords.append(input("Insira uma Stop Word: "))
+            cadastrar = input("Cadastar outra: s ou n")
+        return(self.stopwords)
+        
 
         
+    # Retorne um novo arquivo eliminando todas as StopWords do texto
+
+    # Pegar a lista self.wordlist
+    # Pegar a lista self.stopwords
+    # Comparar  self.wordlist com self.stopwords
+    # Excluir quando self.wordlist == self.stopwords >> lista3
+    # Salvar em uma nova lista textoalterado
+    # Salvar texto alterado em um novo arquivo
+    #
+    #def alterarTexto(self):
+      
+
+
+    # Inclua um método que retorne a distância entre duas palavras
+
+
+
 
 
 
@@ -112,6 +139,9 @@ print("***** Imprime as 10 paralvras mais frequentes:")
 print(file1.top10frequency())
 print("***** Retorne a média e o desvio padrão da quantidade de ocorrências:")
 print(file1.meanAndDeviation())
+print("*****  Cadastre StopWords: ")
+print(file1.stopWords())
+
 
 
 
